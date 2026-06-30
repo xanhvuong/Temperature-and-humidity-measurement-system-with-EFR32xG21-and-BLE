@@ -1,13 +1,14 @@
 # Project Overview
 This project is built on the EFR32xG21 microcontroller to measure temperature and humidity using the DHT11 sensor. The measured data is displayed on an LCD and transmitted to a PC via UART. In addition, the system uses Bluetooth Low Energy (BLE) to broadcast the sensor data, allowing BLE-enabled devices (such as smartphones) to receive the information. A PC application developed in C enables users to configure system parameters and monitor the real-time temperature and humidity readings.
 
-Hardware Requirements
+## Hardware Requirements
 - BRD4180B Radio Board (EFR32xG21 2.4 GHz, 20 dBm)
 - Wireless Starter Kit Mainboard (BRD4001A)
 - DHT11 temperature and humidity sensor with connecting wires
 - A BLE-enabled smartphone with the Simplicity Connect app or any equivalent Bluetooth application
 
-Features
+<img src=https://github.com/xanhvuong/images/blob/master/EFR32xG21_BLE.png" alt="Prototype" width="854" height="480"/>
+## Features
 1. PC Communication via UART
 The PC communicates with the EFR32xG21 through a UART interface to perform the following functions:
 - Configure the temperature/humidity sampling interval.
