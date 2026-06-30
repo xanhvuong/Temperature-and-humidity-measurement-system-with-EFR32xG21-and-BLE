@@ -7,7 +7,7 @@ This project is built on the EFR32xG21 microcontroller to measure temperature an
 - DHT11 temperature and humidity sensor with connecting wires
 - A BLE-enabled smartphone with the Simplicity Connect app or any equivalent Bluetooth application
 
-<img src=https://github.com/xanhvuong/images/blob/master/EFR32xG21_BLE.png" alt="Prototype" width="854" height="480"/>
+<img src="https://github.com/xanhvuong/images/blob/master/EFR32xG21_BLE.png" alt="Prototype" width="854" height="480"/>
 ## Features
 1. PC Communication via UART
 The PC communicates with the EFR32xG21 through a UART interface to perform the following functions:
