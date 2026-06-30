@@ -1,1 +1,2 @@
-# Temperature-and-humidity-measurement-system-with-EFR32xG21-and-BLE
+# Project Overview
+This project is built on the EFR32xG21 microcontroller to measure temperature and humidity using the DHT11 sensor. The measured data is displayed on an LCD and transmitted to a PC via UART. In addition, the system uses Bluetooth Low Energy (BLE) to broadcast the sensor data, allowing BLE-enabled devices (such as smartphones) to receive the information. A PC application developed in C enables users to configure system parameters and monitor the real-time temperature and humidity readings.
