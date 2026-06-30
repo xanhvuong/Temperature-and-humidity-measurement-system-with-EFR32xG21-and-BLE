@@ -10,22 +10,22 @@ Hardware Requirements
 Features
 1. PC Communication via UART
 The PC communicates with the EFR32xG21 through a UART interface to perform the following functions:
-Configure the temperature/humidity sampling interval.
-Configure the BLE advertising interval.
-Retrieve real-time temperature and humidity data.
-Support additional user-defined features (optional).
+- Configure the temperature/humidity sampling interval.
+- Configure the BLE advertising interval.
+- Retrieve real-time temperature and humidity data.
+- Support additional user-defined features (optional).
 
 2. Sensor Data Acquisition and LCD Display
-
 The EFR32xG21 periodically reads temperature and humidity values from the DHT11 sensor. The measured data is displayed on the LCD, including:
-Temperature
-Humidity
-Sensor sampling interval
+- Temperature
+- Humidity
+- Sensor sampling interval
 
 3. Bluetooth Low Energy (BLE) Advertising
 The EFR32xG21 broadcasts sensor data using Bluetooth Low Energy (BLE). Each advertising packet contains:
-Device name
-Temperature value
-Humidity value
+- Device name
+- Temperature value
+- Humidity value
+This allows nearby BLE-enabled devices, such as smartphones, to receive the sensor information without requiring a direct connection.
 
 This allows nearby BLE-enabled devices, such as smartphones, to receive the sensor information without requiring a direct connection.
