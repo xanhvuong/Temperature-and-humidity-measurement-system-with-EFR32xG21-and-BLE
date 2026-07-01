@@ -65,13 +65,13 @@ void initGPIO(void)
 }
 void initDHT11(void)
 {
-    GPIO_PinModeSet(DHT11_PORT, DHT11_PIN, gpioModePushPull, 1); // Khởi tạo chân DHT11 ở trạng thái High
+    GPIO_PinModeSet(DHT11_PORT, DHT11_PIN, gpioModePushPull, 1); // Start DHT11 at High 
 }
 
 void delay_us(uint32_t microseconds)
 {
     for (uint32_t i = 0; i < (microseconds * 14); i++) {
-        __NOP(); // Lệnh "No Operation" để chờ
+        __NOP(); // No Operation to wait
     }
 }
 
@@ -81,15 +81,15 @@ bool readDHT11(uint8_t *humidity, uint8_t *temperature)
     uint8_t data[5] = {0, 0, 0, 0, 0};
     uint32_t timeOut;
 
-    // 1. Gửi tín hiệu khởi động
-    GPIO_PinModeSet(DHT11_PORT, DHT11_PIN, gpioModePushPull, 0); // Đưa chân DHT11 xuống mức thấp
+    // 1. Send Start signal
+    GPIO_PinModeSet(DHT11_PORT, DHT11_PIN, gpioModePushPull, 0); // DHT11 HIGH to LOW
     GPIO_PinOutClear(DHT11_PORT, DHT11_PIN);
-    delay_us(18000); // Delay 18ms (yêu cầu của DHT11)
+    delay_us(18000); // Delay 18ms 
     GPIO_PinOutSet(DHT11_PORT, DHT11_PIN);
     delay_us(20); // Delay 20-40us
-    GPIO_PinModeSet(DHT11_PORT, DHT11_PIN, gpioModeInputPull, 1); // Chuyển sang chế độ input
+    GPIO_PinModeSet(DHT11_PORT, DHT11_PIN, gpioModeInputPull, 1); // Switch to input mode
 
-    // 2. Chờ phản hồi từ DHT11
+    // 2. Wait response from DHT11
     timeOut = 0;
     while (GPIO_PinInGet(DHT11_PORT, DHT11_PIN) && timeOut++ < 100) delay_us(1);
     if (timeOut >= 100) return false;
@@ -102,17 +102,17 @@ bool readDHT11(uint8_t *humidity, uint8_t *temperature)
     while (GPIO_PinInGet(DHT11_PORT, DHT11_PIN) && timeOut++ < 100) delay_us(1);
     if (timeOut >= 100) return false;
 
-    // 3. Đọc dữ liệu 40-bit
+    // 3. Read data 40-bit
     for (int i = 0; i < 40; i++)
     {
-        // Chờ đầu xung
+        // Wait for the first pulse
         timeOut = 0;
         while (!GPIO_PinInGet(DHT11_PORT, DHT11_PIN) && timeOut++ < 100) delay_us(1);
         if (timeOut >= 100) return false;
 
-        delay_us(30); // Delay để đọc bit
+        delay_us(30); // Delay  to read bit
 
-        if (GPIO_PinInGet(DHT11_PORT, DHT11_PIN)) // Nếu chân ở mức cao
+        if (GPIO_PinInGet(DHT11_PORT, DHT11_PIN)) // if pin at HIGHH
             data[i / 8] |= (1 << (7 - (i % 8)));
 
         timeOut = 0;
